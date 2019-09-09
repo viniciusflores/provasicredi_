@@ -3,7 +3,6 @@ package core;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.hamcrest.Matchers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -11,41 +10,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.SkipException;
-
-import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.http.ContentType;
-import project_constants.Constants;
-
 
 public class BasePage extends DriverFactory {
 	private JavascriptExecutor js = (JavascriptExecutor) driver;
-
-	public Boolean waitElementToBeClickable(By by) {
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, 15);
-			wait.until(ExpectedConditions.elementToBeClickable(by));
-			List<WebElement> elements = driver.findElements(by);
-			return elements.size() > 0;
-		} catch (Exception e) {
-			driver.get(Constants.URL);
-			throw new SkipException("ELEMENT ISN'T CLICKABLE: " + e.getMessage());
-		}
-	}
-
-	public Boolean waitElementToBeEnable(By by) {
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, 15);
-			wait.until(ExpectedConditions.presenceOfElementLocated(by));
-			List<WebElement> elements = driver.findElements(by);
-			return elements.size() > 0;
-		} catch (Exception e) {
-			driver.get(Constants.URL);
-			throw new SkipException("ELEMENT DON'T BE VISIBLE: " + e.getMessage());
-		}
-	}
 
 	public void write(By by, String texto) {
 		try {
@@ -102,23 +69,12 @@ public class BasePage extends DriverFactory {
 			List<WebElement> elements = driver.findElements(by);
 			return elements.size() > 0;
 		} catch (Exception e) {
-			throw new NoSuchElementException("Element not found: " + e.getMessage());
+			return false;
 		}
 	}
 
 	public boolean existElementByText(String text) {
 		return existElement(By.xpath("//*[contains(.,'" + text + "')]"));
-	}
-
-	public boolean existElementWithReturn(By by) {
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, 15);
-			wait.until(ExpectedConditions.presenceOfElementLocated(by));
-			List<WebElement> elements = driver.findElements(by);
-			return elements.size() > 0;
-		} catch (Exception e) {
-			return false;
-		}
 	}
 
 	public boolean elementIsClickable(By by) {
@@ -156,17 +112,12 @@ public class BasePage extends DriverFactory {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
 	}
 
-	public void commandJS(String command, String argument) {
-		js.executeScript(command, argument);
-	}
-
-	/**
-	 * Utilizado para executar comandos JS
-	 * 
-	 * @param command
-	 */
 	public void commandJS(String command) {
 		js.executeScript(command, "");
+	}
+
+	public void commandJS(String command, String argument) {
+		js.executeScript(command, argument);
 	}
 
 	/**
@@ -189,7 +140,7 @@ public class BasePage extends DriverFactory {
 	/**
 	 * Metodo usado para tratar uma string retornando somente os numericos
 	 * 
-	 * @param idCompleto
+	 * @param 
 	 * @return
 	 */
 	public int returnOnlyNumbers(String word) {

@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="provaSicred" configfailurepolicy="continue" verbose="1">
+	<test name="provaSicred_tests">
+		<parameter name="browser" value="CHROME" />
+		<classes>
+			<class name="test.BootstrapTest" />
+		</classes>
+	</test>
+</suite>
