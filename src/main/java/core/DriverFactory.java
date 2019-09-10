@@ -30,7 +30,7 @@ public class DriverFactory {
 				switch (AutomationTypeEnum.valueOf(browser)) {
 				case CHROME:
 					WebDriverManager.chromedriver().setup();
-					optionsChrome.addArguments("--window-size=1024,768");
+					//optionsChrome.addArguments("--window-size=1024,768");
 					optionsChrome.addArguments("--start-maximized");
 					//optionsChrome.addArguments("--headless");
 					driver = new ChromeDriver(optionsChrome);
