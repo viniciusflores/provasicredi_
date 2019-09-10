@@ -13,6 +13,7 @@ public class BootstrapTest extends BaseTest {
 	@Test
 	public void desafioUm()  {
 		page.changeSelectByValue(By.id("switch-version-select"), "bootstrap_theme_v4");
-		assertTrue(driver.getCurrentUrl().equalsIgnoreCase("https://www.grocerycrud.com/demo/bootstrap_theme_v4"));
+		page.click(By.cssSelector("[class='el el-plus']"));
+		assertTrue(driver.getCurrentUrl().equalsIgnoreCase("https://www.grocerycrud.com/demo/bootstrap_theme_v4/add"));
 	}
 }
