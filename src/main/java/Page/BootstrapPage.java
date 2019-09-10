@@ -1,5 +1,7 @@
 package Page;
 
-public class BootstrapPage {
+import core.BasePage;
+
+public class BootstrapPage extends BasePage {
 
 }

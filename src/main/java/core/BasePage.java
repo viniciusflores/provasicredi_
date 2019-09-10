@@ -9,6 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage extends DriverFactory {
@@ -181,5 +182,16 @@ public class BasePage extends DriverFactory {
 			return true;
 		}
 		return false;
+	}
+	
+	public void changeSelectByValue(By by, String value) {
+		try{
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			wait.until(ExpectedConditions.presenceOfElementLocated(by));
+			Select select = new Select(driver.findElement(by));
+			select.selectByValue(value);
+		} catch (Exception e) {
+			throw new NoSuchElementException("Element not found: " + e.getMessage());
+		}
 	}
 }

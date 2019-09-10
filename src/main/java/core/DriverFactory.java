@@ -1,6 +1,5 @@
 package core;
 
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,7 +7,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.opera.OperaOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import project_constants.AutomationTypeEnum;
@@ -34,7 +32,7 @@ public class DriverFactory {
 					WebDriverManager.chromedriver().setup();
 					optionsChrome.addArguments("--window-size=1024,768");
 					optionsChrome.addArguments("--start-maximized");
-					optionsChrome.addArguments("--headless");
+					//optionsChrome.addArguments("--headless");
 					driver = new ChromeDriver(optionsChrome);
 					driver.get(Constants.URL);
 					break;
