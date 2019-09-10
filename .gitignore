@@ -1,6 +1,7 @@
 /target/
 /test-output/*
 /screenshots/
+/TestReport/
 /.classpath
 /.project
 /.settings

@@ -148,7 +148,7 @@ public class BasePage extends DriverFactory {
 		return Integer.valueOf(word.replaceAll("[^\\d.]", ""));
 	}
 
-	public static void waitFixed(long time) {
+	public void waitFixed(long time) {
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
